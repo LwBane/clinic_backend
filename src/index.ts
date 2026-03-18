@@ -12,9 +12,20 @@ app.get('/', (req, res) => {
 })
 
 // Endpoints usuario
-app.get('/usuarios', async (req, res) => {
+app.get('/usuarios', async (_, res) => {
   const usuarios = await prisma.usuario.findMany();
-  res.json(usuarios);
+  return res.json(usuarios);
+})
+
+app.get('/usuarios/:id', async (req, res) => {
+  const idUsuario = Number(req.params.id)
+  const usuario = await prisma.usuario.findUnique({
+    where: {
+      id: idUsuario
+    }
+  })
+
+  return res.status(200).json(usuario);
 })
 
 app.post("/usuarios", async (req, res) => {
@@ -27,6 +38,36 @@ app.post("/usuarios", async (req, res) => {
     }
   })
   return res.status(201).json(usuarioCriado)
+})
+
+app.put("/usuarios/:id", async (req, res) => {
+  const idUsuario = Number(req.params.id)
+  const dadosParaAtualizar = req.body as Omit<Usuario, 'id'>
+
+  const usuarioAtualizado = await prisma.usuario.update({
+    data: {
+      ...dadosParaAtualizar
+    },
+    where: {
+      id: idUsuario
+    }
+  })
+
+  return res.status(200).json(usuarioAtualizado);
+})
+
+app.delete('/usuarios/:id', async (req, res) => {
+  const idUsuario = Number(req.params.id)
+  const usuarioDeletado = await prisma.usuario.delete({
+    where: {
+      id: idUsuario
+    }
+  })
+
+  return res.status(200).json({
+    mensagem: "Usuário deletado com sucesso!",
+    data: usuarioDeletado
+  });
 })
 
 //Exames
