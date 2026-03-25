@@ -29,7 +29,9 @@ app.get('/usuarios/:id', async (req, res) => {
   return res.status(200).json(usuario);
 })
 
-app.post("/usuarios", async (req, res) => {
+// Criação usuários 
+
+app.post("/cadastro", async (req, res) => {
   console.log(req.body)
   const dadosUsuario = req.body as Usuario
   const hash = await createHash(dadosUsuario.senha);
@@ -72,6 +74,35 @@ app.delete('/usuarios/:id', async (req, res) => {
     data: usuarioDeletado
   });
 })
+
+// === Login usuários ===
+
+app.post("/login", async (req, res) => {
+  const { email, senha } = req.body 
+
+  const usuario = await prisma.usuario.findUnique({
+    where: { email }
+  })
+
+  if (!usuario) {
+    return res.status(401).json({
+      mensagem: "Usuário inválido!",
+    })
+  }
+
+  const senhaValida = await createHash (senha)
+
+  if (!senhaValida) {
+    return res.status(401).json({
+      mensagem: "Senha inválida!",
+    })
+  }
+
+  return res.status(200).json({
+    mensagem: "Login realizado com sucesso!"
+  })
+})
+
 
 //Exames
 app.get('/exames', async (_, res) => {
