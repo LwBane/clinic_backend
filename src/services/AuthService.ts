@@ -2,10 +2,10 @@ import type { Usuario } from "../prisma/generated/prisma/client";
 import { createHash } from "../utils/createHash";
 import bcrypt from "bcrypt";
 import { signTokenAcesso, signTokenRefresh } from "../utils/jwt";
-import { authRepository } from "../repositories/AuthRepository";
+import { AuthRepository, authRepository } from "../repositories/AuthRepository";
 
 export class AuthService {
-    constructor(private readonly repository: any) { // TO-DO TIPAR SERVICE
+    constructor(private readonly repository: AuthRepository) { // TO-DO TIPAR SERVICE
     }
 
     async cadastrar(dadosUsuario: Usuario) {
@@ -22,7 +22,7 @@ export class AuthService {
     async logar(dadosUsuario: Partial<Usuario>) {
         const existeUsuario = await this.repository.existeUsuario(dadosUsuario.email || '')
         const credenciaisValidas = await bcrypt.compare(dadosUsuario.senha || "", existeUsuario?.senha || "")
-
+        console.log(existeUsuario, credenciaisValidas, dadosUsuario)
         if (existeUsuario && credenciaisValidas) {
             const tokenAcesso = signTokenAcesso({
                 email: existeUsuario.email,
