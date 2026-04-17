@@ -1,7 +1,4 @@
 import express from 'express';
-import { prisma } from './prisma/prisma';
-import type { Exame, Usuario } from './prisma/generated/prisma/client';
-import { createHash } from './utils/createHash';
 import { auth } from './middleware/auth';
 import cors from "cors"
 import { authRouter } from './routes/auth';
