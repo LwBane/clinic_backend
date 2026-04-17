@@ -5,6 +5,15 @@ import { createHash } from "../utils/createHash";
 
 export const usuarioRouter = Router();
 
+// authRouter.post("/cadastro", async (req, res) => {
+//     return UserController.cadastrar(req, res)
+// })
+
+// authRouter.post("/login", async (req, res) => {
+//     return UserController.logar(req, res)
+// })
+
+
 // Endpoints usuario
 usuarioRouter.get('/usuarios', async (_, res) => {
   const usuarios = await prisma.usuario.findMany();
@@ -65,3 +74,4 @@ usuarioRouter.delete('/usuarios/:id', async (req, res) => {
     data: usuarioDeletado
   });
 })
+
