@@ -1,16 +1,21 @@
 import type { Usuario } from "../prisma/generated/prisma/client";
 import { createHash } from "../utils/createHash";
 import bcrypt from "bcrypt";
-import { signTokenAcesso, signTokenRefresh } from "../utils/jwt";
-import { UserRepository, UserRepository } from "../repositories/UserRepository";
+import { userRepository, type UserRepository } from "../repositories/UserRepository";
 
 export class UserService {
-    constructor(private readonly repository: UserRepository) { 
+    constructor(private readonly repository: UserRepository) { // TO-DO TIPAR SERVICE
     }
 
-    async cadastrar(dadosUsuario: Usuario) {
+    async listarTodosUsuarios() {
+        const usuarios = await this.repository.listarTodosUsuarios()
+        return usuarios
+    }
+
+    async criarUsuario(dadosUsuario: Usuario) {
         const hash = await createHash(dadosUsuario.senha);
-        const usuarioCriado = await this.repository.cadastrar({
+
+        const usuarioCriado = await this.repository.criarUsuario({
             email: dadosUsuario.email,
             nome: dadosUsuario.nome || null,
             senha: hash
@@ -18,61 +23,21 @@ export class UserService {
         return usuarioCriado
     }
 
-    async logar(dadosUsuario: Partial<Usuario>) {
-        const existeUsuario = await this.repository.existeUsuario(dadosUsuario.email || '')
-        const credenciaisValidas = await bcrypt.compare(dadosUsuario.senha || "", existeUsuario?.senha || "")
-        console.log(existeUsuario, credenciaisValidas, dadosUsuario)
-        if (existeUsuario && credenciaisValidas) {
-            const tokenAcesso = signTokenAcesso({
-                email: existeUsuario.email,
-                nome: existeUsuario.nome
-            })
-            const tokenRefresh = signTokenRefresh({
-                email: existeUsuario.email,
-                nome: existeUsuario.nome
-            })
-
-            const accessExpires = new Date()
-            const accessExpiresUpdate = accessExpires.setHours(accessExpires.getHours() + 1)
-            // acesso create
-            await this.repository.criarToken({
-                token: tokenAcesso,
-                expiresAt: new Date(accessExpiresUpdate),
-                type: 'ACCESS',
-                usuarioId: existeUsuario.id
-            })
-
-            //refresh create
-            const refreshExpires = new Date()
-            const refreshExpiresUpdated = refreshExpires.setMonth(refreshExpires.getMonth() + 1)
-
-            await this.repository.criarToken({
-                token: tokenRefresh,
-                expiresAt: new Date(refreshExpiresUpdated),
-                type: 'REFRESH',
-                usuarioId: existeUsuario.id
-            })
-
-            return {
-                tokenAcesso,
-                tokenRefresh
-            }
-        }
-
-        throw new Error("Credenciais inválidas")
-
+    async buscarUsuarioId(idUsuario: number) {
+        const usuario = await this.repository.buscarUsuarioId(idUsuario);
+        return usuario;
     }
 
-    //  async deletar(dadosUsuario: Usuario) {
-    //     const hash = await createHash(dadosUsuario.senha);
-    //     const usuarioCriado = await this.repository.cadastrar({
-    //         email: dadosUsuario.email,
-    //         nome: dadosUsuario.nome || null,
-    //         senha: hash
-    //     })
-    //     return usuarioCriado
-    // }
+    async atualizarUsuario(idUsuario: number, dadosParaAtualizar: Omit<Usuario, 'id'>) {
+        const usuarioAtualizado = await this.repository.atualizarUsuario(idUsuario, dadosParaAtualizar)
+        return usuarioAtualizado;
+    }
 
+
+    async deletarUsuario(idUsuario: number) {
+        const usuario = await this.repository.deletarUsuario(idUsuario);
+        return usuario;
+    }
 }
 
-export const authService = new UserService(UserRepository)
+export const userService = new UserService(userRepository)
