@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Exame
@@ -302,7 +302,7 @@ export type ExameCreateInput = {
   descricao: string
   resultado: string
   data_exame: Date | string
-  paciente?: Prisma.PacienteCreateNestedOneWithoutExameInput
+  paciente?: Prisma.PacienteCreateNestedOneWithoutExamesInput
 }
 
 export type ExameUncheckedCreateInput = {
@@ -321,7 +321,7 @@ export type ExameUpdateInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
   data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  paciente?: Prisma.PacienteUpdateOneWithoutExameNestedInput
+  paciente?: Prisma.PacienteUpdateOneWithoutExamesNestedInput
 }
 
 export type ExameUncheckedUpdateInput = {
@@ -360,6 +360,16 @@ export type ExameUncheckedUpdateManyInput = {
   resultado?: Prisma.StringFieldUpdateOperationsInput | string
   data_exame?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pacienteId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+export type ExameListRelationFilter = {
+  every?: Prisma.ExameWhereInput
+  some?: Prisma.ExameWhereInput
+  none?: Prisma.ExameWhereInput
+}
+
+export type ExameOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ExameCountOrderByAggregateInput = {
@@ -404,36 +414,6 @@ export type ExameSumOrderByAggregateInput = {
   pacienteId?: Prisma.SortOrder
 }
 
-export type ExameListRelationFilter = {
-  every?: Prisma.ExameWhereInput
-  some?: Prisma.ExameWhereInput
-  none?: Prisma.ExameWhereInput
-}
-
-export type ExameOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type ExameCreateNestedManyWithoutPacienteInput = {
   create?: Prisma.XOR<Prisma.ExameCreateWithoutPacienteInput, Prisma.ExameUncheckedCreateWithoutPacienteInput> | Prisma.ExameCreateWithoutPacienteInput[] | Prisma.ExameUncheckedCreateWithoutPacienteInput[]
   connectOrCreate?: Prisma.ExameCreateOrConnectWithoutPacienteInput | Prisma.ExameCreateOrConnectWithoutPacienteInput[]
@@ -474,6 +454,22 @@ export type ExameUncheckedUpdateManyWithoutPacienteNestedInput = {
   update?: Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput | Prisma.ExameUpdateWithWhereUniqueWithoutPacienteInput[]
   updateMany?: Prisma.ExameUpdateManyWithWhereWithoutPacienteInput | Prisma.ExameUpdateManyWithWhereWithoutPacienteInput[]
   deleteMany?: Prisma.ExameScalarWhereInput | Prisma.ExameScalarWhereInput[]
+}
+
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type ExameCreateWithoutPacienteInput = {
