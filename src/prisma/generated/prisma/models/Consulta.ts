@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Consulta
@@ -289,7 +289,7 @@ export type ConsultaCreateInput = {
   data_consulta: Date | string
   observacoes: string
   medico_responsavel_id: number
-  paciente: Prisma.PacienteCreateNestedOneWithoutConsultaInput
+  paciente: Prisma.PacienteCreateNestedOneWithoutConsultasInput
 }
 
 export type ConsultaUncheckedCreateInput = {
@@ -306,7 +306,7 @@ export type ConsultaUpdateInput = {
   data_consulta?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacoes?: Prisma.StringFieldUpdateOperationsInput | string
   medico_responsavel_id?: Prisma.IntFieldUpdateOperationsInput | number
-  paciente?: Prisma.PacienteUpdateOneRequiredWithoutConsultaNestedInput
+  paciente?: Prisma.PacienteUpdateOneRequiredWithoutConsultasNestedInput
 }
 
 export type ConsultaUncheckedUpdateInput = {
@@ -341,6 +341,16 @@ export type ConsultaUncheckedUpdateManyInput = {
   observacoes?: Prisma.StringFieldUpdateOperationsInput | string
   medico_responsavel_id?: Prisma.IntFieldUpdateOperationsInput | number
   paciente_id?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ConsultaListRelationFilter = {
+  every?: Prisma.ConsultaWhereInput
+  some?: Prisma.ConsultaWhereInput
+  none?: Prisma.ConsultaWhereInput
+}
+
+export type ConsultaOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ConsultaCountOrderByAggregateInput = {
@@ -380,16 +390,6 @@ export type ConsultaSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   medico_responsavel_id?: Prisma.SortOrder
   paciente_id?: Prisma.SortOrder
-}
-
-export type ConsultaListRelationFilter = {
-  every?: Prisma.ConsultaWhereInput
-  some?: Prisma.ConsultaWhereInput
-  none?: Prisma.ConsultaWhereInput
-}
-
-export type ConsultaOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type ConsultaCreateNestedManyWithoutPacienteInput = {

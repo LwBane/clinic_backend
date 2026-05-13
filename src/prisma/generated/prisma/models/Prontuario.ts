@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Prontuario
@@ -278,7 +278,7 @@ export type ProntuarioScalarWhereWithAggregatesInput = {
 export type ProntuarioCreateInput = {
   descricao: string
   data?: Date | string | null
-  paciente: Prisma.PacienteCreateNestedOneWithoutProntuarioInput
+  paciente: Prisma.PacienteCreateNestedOneWithoutProntuariosInput
   usuario: Prisma.UsuarioCreateNestedOneWithoutProntuariosInput
 }
 
@@ -293,7 +293,7 @@ export type ProntuarioUncheckedCreateInput = {
 export type ProntuarioUpdateInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   data?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  paciente?: Prisma.PacienteUpdateOneRequiredWithoutProntuarioNestedInput
+  paciente?: Prisma.PacienteUpdateOneRequiredWithoutProntuariosNestedInput
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProntuariosNestedInput
 }
 
@@ -414,10 +414,6 @@ export type ProntuarioUncheckedUpdateManyWithoutUsuarioNestedInput = {
   deleteMany?: Prisma.ProntuarioScalarWhereInput | Prisma.ProntuarioScalarWhereInput[]
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ProntuarioCreateNestedManyWithoutPacienteInput = {
   create?: Prisma.XOR<Prisma.ProntuarioCreateWithoutPacienteInput, Prisma.ProntuarioUncheckedCreateWithoutPacienteInput> | Prisma.ProntuarioCreateWithoutPacienteInput[] | Prisma.ProntuarioUncheckedCreateWithoutPacienteInput[]
   connectOrCreate?: Prisma.ProntuarioCreateOrConnectWithoutPacienteInput | Prisma.ProntuarioCreateOrConnectWithoutPacienteInput[]
@@ -460,10 +456,14 @@ export type ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput = {
   deleteMany?: Prisma.ProntuarioScalarWhereInput | Prisma.ProntuarioScalarWhereInput[]
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type ProntuarioCreateWithoutUsuarioInput = {
   descricao: string
   data?: Date | string | null
-  paciente: Prisma.PacienteCreateNestedOneWithoutProntuarioInput
+  paciente: Prisma.PacienteCreateNestedOneWithoutProntuariosInput
 }
 
 export type ProntuarioUncheckedCreateWithoutUsuarioInput = {
@@ -559,7 +559,7 @@ export type ProntuarioCreateManyUsuarioInput = {
 export type ProntuarioUpdateWithoutUsuarioInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   data?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  paciente?: Prisma.PacienteUpdateOneRequiredWithoutProntuarioNestedInput
+  paciente?: Prisma.PacienteUpdateOneRequiredWithoutProntuariosNestedInput
 }
 
 export type ProntuarioUncheckedUpdateWithoutUsuarioInput = {

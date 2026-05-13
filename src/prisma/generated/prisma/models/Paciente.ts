@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Paciente
@@ -240,9 +240,9 @@ export type PacienteWhereInput = {
   data_nascimento?: Prisma.DateTimeFilter<"Paciente"> | Date | string
   sexo?: Prisma.StringFilter<"Paciente"> | string
   responsavel?: Prisma.StringNullableFilter<"Paciente"> | string | null
-  Prontuario?: Prisma.ProntuarioListRelationFilter
-  Consulta?: Prisma.ConsultaListRelationFilter
-  Exame?: Prisma.ExameListRelationFilter
+  prontuarios?: Prisma.ProntuarioListRelationFilter
+  consultas?: Prisma.ConsultaListRelationFilter
+  exames?: Prisma.ExameListRelationFilter
 }
 
 export type PacienteOrderByWithRelationInput = {
@@ -254,9 +254,9 @@ export type PacienteOrderByWithRelationInput = {
   data_nascimento?: Prisma.SortOrder
   sexo?: Prisma.SortOrder
   responsavel?: Prisma.SortOrderInput | Prisma.SortOrder
-  Prontuario?: Prisma.ProntuarioOrderByRelationAggregateInput
-  Consulta?: Prisma.ConsultaOrderByRelationAggregateInput
-  Exame?: Prisma.ExameOrderByRelationAggregateInput
+  prontuarios?: Prisma.ProntuarioOrderByRelationAggregateInput
+  consultas?: Prisma.ConsultaOrderByRelationAggregateInput
+  exames?: Prisma.ExameOrderByRelationAggregateInput
 }
 
 export type PacienteWhereUniqueInput = Prisma.AtLeast<{
@@ -271,9 +271,9 @@ export type PacienteWhereUniqueInput = Prisma.AtLeast<{
   data_nascimento?: Prisma.DateTimeFilter<"Paciente"> | Date | string
   sexo?: Prisma.StringFilter<"Paciente"> | string
   responsavel?: Prisma.StringNullableFilter<"Paciente"> | string | null
-  Prontuario?: Prisma.ProntuarioListRelationFilter
-  Consulta?: Prisma.ConsultaListRelationFilter
-  Exame?: Prisma.ExameListRelationFilter
+  prontuarios?: Prisma.ProntuarioListRelationFilter
+  consultas?: Prisma.ConsultaListRelationFilter
+  exames?: Prisma.ExameListRelationFilter
 }, "id">
 
 export type PacienteOrderByWithAggregationInput = {
@@ -314,9 +314,9 @@ export type PacienteCreateInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
-  Consulta?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameCreateNestedManyWithoutPacienteInput
 }
 
 export type PacienteUncheckedCreateInput = {
@@ -328,9 +328,9 @@ export type PacienteUncheckedCreateInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
-  Consulta?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
 }
 
 export type PacienteUpdateInput = {
@@ -341,9 +341,9 @@ export type PacienteUpdateInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
-  Consulta?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
 }
 
 export type PacienteUncheckedUpdateInput = {
@@ -355,9 +355,9 @@ export type PacienteUncheckedUpdateInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
-  Consulta?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
 export type PacienteCreateManyInput = {
@@ -390,16 +390,6 @@ export type PacienteUncheckedUpdateManyInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type PacienteNullableScalarRelationFilter = {
-  is?: Prisma.PacienteWhereInput | null
-  isNot?: Prisma.PacienteWhereInput | null
-}
-
-export type PacienteScalarRelationFilter = {
-  is?: Prisma.PacienteWhereInput
-  isNot?: Prisma.PacienteWhereInput
 }
 
 export type PacienteCountOrderByAggregateInput = {
@@ -443,51 +433,61 @@ export type PacienteSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
-export type PacienteCreateNestedOneWithoutExameInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutExameInput, Prisma.PacienteUncheckedCreateWithoutExameInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutExameInput
+export type PacienteScalarRelationFilter = {
+  is?: Prisma.PacienteWhereInput
+  isNot?: Prisma.PacienteWhereInput
+}
+
+export type PacienteNullableScalarRelationFilter = {
+  is?: Prisma.PacienteWhereInput | null
+  isNot?: Prisma.PacienteWhereInput | null
+}
+
+export type PacienteCreateNestedOneWithoutProntuariosInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutProntuariosInput, Prisma.PacienteUncheckedCreateWithoutProntuariosInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutProntuariosInput
   connect?: Prisma.PacienteWhereUniqueInput
 }
 
-export type PacienteUpdateOneWithoutExameNestedInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutExameInput, Prisma.PacienteUncheckedCreateWithoutExameInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutExameInput
-  upsert?: Prisma.PacienteUpsertWithoutExameInput
+export type PacienteUpdateOneRequiredWithoutProntuariosNestedInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutProntuariosInput, Prisma.PacienteUncheckedCreateWithoutProntuariosInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutProntuariosInput
+  upsert?: Prisma.PacienteUpsertWithoutProntuariosInput
+  connect?: Prisma.PacienteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutProntuariosInput, Prisma.PacienteUpdateWithoutProntuariosInput>, Prisma.PacienteUncheckedUpdateWithoutProntuariosInput>
+}
+
+export type PacienteCreateNestedOneWithoutConsultasInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutConsultasInput, Prisma.PacienteUncheckedCreateWithoutConsultasInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutConsultasInput
+  connect?: Prisma.PacienteWhereUniqueInput
+}
+
+export type PacienteUpdateOneRequiredWithoutConsultasNestedInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutConsultasInput, Prisma.PacienteUncheckedCreateWithoutConsultasInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutConsultasInput
+  upsert?: Prisma.PacienteUpsertWithoutConsultasInput
+  connect?: Prisma.PacienteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutConsultasInput, Prisma.PacienteUpdateWithoutConsultasInput>, Prisma.PacienteUncheckedUpdateWithoutConsultasInput>
+}
+
+export type PacienteCreateNestedOneWithoutExamesInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutExamesInput, Prisma.PacienteUncheckedCreateWithoutExamesInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutExamesInput
+  connect?: Prisma.PacienteWhereUniqueInput
+}
+
+export type PacienteUpdateOneWithoutExamesNestedInput = {
+  create?: Prisma.XOR<Prisma.PacienteCreateWithoutExamesInput, Prisma.PacienteUncheckedCreateWithoutExamesInput>
+  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutExamesInput
+  upsert?: Prisma.PacienteUpsertWithoutExamesInput
   disconnect?: Prisma.PacienteWhereInput | boolean
   delete?: Prisma.PacienteWhereInput | boolean
   connect?: Prisma.PacienteWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutExameInput, Prisma.PacienteUpdateWithoutExameInput>, Prisma.PacienteUncheckedUpdateWithoutExameInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutExamesInput, Prisma.PacienteUpdateWithoutExamesInput>, Prisma.PacienteUncheckedUpdateWithoutExamesInput>
 }
 
-export type PacienteCreateNestedOneWithoutProntuarioInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutProntuarioInput, Prisma.PacienteUncheckedCreateWithoutProntuarioInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutProntuarioInput
-  connect?: Prisma.PacienteWhereUniqueInput
-}
-
-export type PacienteUpdateOneRequiredWithoutProntuarioNestedInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutProntuarioInput, Prisma.PacienteUncheckedCreateWithoutProntuarioInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutProntuarioInput
-  upsert?: Prisma.PacienteUpsertWithoutProntuarioInput
-  connect?: Prisma.PacienteWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutProntuarioInput, Prisma.PacienteUpdateWithoutProntuarioInput>, Prisma.PacienteUncheckedUpdateWithoutProntuarioInput>
-}
-
-export type PacienteCreateNestedOneWithoutConsultaInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutConsultaInput, Prisma.PacienteUncheckedCreateWithoutConsultaInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutConsultaInput
-  connect?: Prisma.PacienteWhereUniqueInput
-}
-
-export type PacienteUpdateOneRequiredWithoutConsultaNestedInput = {
-  create?: Prisma.XOR<Prisma.PacienteCreateWithoutConsultaInput, Prisma.PacienteUncheckedCreateWithoutConsultaInput>
-  connectOrCreate?: Prisma.PacienteCreateOrConnectWithoutConsultaInput
-  upsert?: Prisma.PacienteUpsertWithoutConsultaInput
-  connect?: Prisma.PacienteWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PacienteUpdateToOneWithWhereWithoutConsultaInput, Prisma.PacienteUpdateWithoutConsultaInput>, Prisma.PacienteUncheckedUpdateWithoutConsultaInput>
-}
-
-export type PacienteCreateWithoutExameInput = {
+export type PacienteCreateWithoutProntuariosInput = {
   nome: string
   cpf: string
   telefone: string
@@ -495,11 +495,11 @@ export type PacienteCreateWithoutExameInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
-  Consulta?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteUncheckedCreateWithoutExameInput = {
+export type PacienteUncheckedCreateWithoutProntuariosInput = {
   id?: number
   nome: string
   cpf: string
@@ -508,27 +508,27 @@ export type PacienteUncheckedCreateWithoutExameInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
-  Consulta?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteCreateOrConnectWithoutExameInput = {
+export type PacienteCreateOrConnectWithoutProntuariosInput = {
   where: Prisma.PacienteWhereUniqueInput
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutExameInput, Prisma.PacienteUncheckedCreateWithoutExameInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutProntuariosInput, Prisma.PacienteUncheckedCreateWithoutProntuariosInput>
 }
 
-export type PacienteUpsertWithoutExameInput = {
-  update: Prisma.XOR<Prisma.PacienteUpdateWithoutExameInput, Prisma.PacienteUncheckedUpdateWithoutExameInput>
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutExameInput, Prisma.PacienteUncheckedCreateWithoutExameInput>
+export type PacienteUpsertWithoutProntuariosInput = {
+  update: Prisma.XOR<Prisma.PacienteUpdateWithoutProntuariosInput, Prisma.PacienteUncheckedUpdateWithoutProntuariosInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutProntuariosInput, Prisma.PacienteUncheckedCreateWithoutProntuariosInput>
   where?: Prisma.PacienteWhereInput
 }
 
-export type PacienteUpdateToOneWithWhereWithoutExameInput = {
+export type PacienteUpdateToOneWithWhereWithoutProntuariosInput = {
   where?: Prisma.PacienteWhereInput
-  data: Prisma.XOR<Prisma.PacienteUpdateWithoutExameInput, Prisma.PacienteUncheckedUpdateWithoutExameInput>
+  data: Prisma.XOR<Prisma.PacienteUpdateWithoutProntuariosInput, Prisma.PacienteUncheckedUpdateWithoutProntuariosInput>
 }
 
-export type PacienteUpdateWithoutExameInput = {
+export type PacienteUpdateWithoutProntuariosInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
@@ -536,11 +536,11 @@ export type PacienteUpdateWithoutExameInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
-  Consulta?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
 }
 
-export type PacienteUncheckedUpdateWithoutExameInput = {
+export type PacienteUncheckedUpdateWithoutProntuariosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -549,11 +549,11 @@ export type PacienteUncheckedUpdateWithoutExameInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
-  Consulta?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
-export type PacienteCreateWithoutProntuarioInput = {
+export type PacienteCreateWithoutConsultasInput = {
   nome: string
   cpf: string
   telefone: string
@@ -561,11 +561,11 @@ export type PacienteCreateWithoutProntuarioInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Consulta?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteUncheckedCreateWithoutProntuarioInput = {
+export type PacienteUncheckedCreateWithoutConsultasInput = {
   id?: number
   nome: string
   cpf: string
@@ -574,27 +574,27 @@ export type PacienteUncheckedCreateWithoutProntuarioInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Consulta?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
+  exames?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteCreateOrConnectWithoutProntuarioInput = {
+export type PacienteCreateOrConnectWithoutConsultasInput = {
   where: Prisma.PacienteWhereUniqueInput
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutProntuarioInput, Prisma.PacienteUncheckedCreateWithoutProntuarioInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutConsultasInput, Prisma.PacienteUncheckedCreateWithoutConsultasInput>
 }
 
-export type PacienteUpsertWithoutProntuarioInput = {
-  update: Prisma.XOR<Prisma.PacienteUpdateWithoutProntuarioInput, Prisma.PacienteUncheckedUpdateWithoutProntuarioInput>
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutProntuarioInput, Prisma.PacienteUncheckedCreateWithoutProntuarioInput>
+export type PacienteUpsertWithoutConsultasInput = {
+  update: Prisma.XOR<Prisma.PacienteUpdateWithoutConsultasInput, Prisma.PacienteUncheckedUpdateWithoutConsultasInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutConsultasInput, Prisma.PacienteUncheckedCreateWithoutConsultasInput>
   where?: Prisma.PacienteWhereInput
 }
 
-export type PacienteUpdateToOneWithWhereWithoutProntuarioInput = {
+export type PacienteUpdateToOneWithWhereWithoutConsultasInput = {
   where?: Prisma.PacienteWhereInput
-  data: Prisma.XOR<Prisma.PacienteUpdateWithoutProntuarioInput, Prisma.PacienteUncheckedUpdateWithoutProntuarioInput>
+  data: Prisma.XOR<Prisma.PacienteUpdateWithoutConsultasInput, Prisma.PacienteUncheckedUpdateWithoutConsultasInput>
 }
 
-export type PacienteUpdateWithoutProntuarioInput = {
+export type PacienteUpdateWithoutConsultasInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
@@ -602,11 +602,11 @@ export type PacienteUpdateWithoutProntuarioInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Consulta?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
 }
 
-export type PacienteUncheckedUpdateWithoutProntuarioInput = {
+export type PacienteUncheckedUpdateWithoutConsultasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -615,11 +615,11 @@ export type PacienteUncheckedUpdateWithoutProntuarioInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Consulta?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
+  exames?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
-export type PacienteCreateWithoutConsultaInput = {
+export type PacienteCreateWithoutExamesInput = {
   nome: string
   cpf: string
   telefone: string
@@ -627,11 +627,11 @@ export type PacienteCreateWithoutConsultaInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteUncheckedCreateWithoutConsultaInput = {
+export type PacienteUncheckedCreateWithoutExamesInput = {
   id?: number
   nome: string
   cpf: string
@@ -640,27 +640,27 @@ export type PacienteUncheckedCreateWithoutConsultaInput = {
   data_nascimento: Date | string
   sexo: string
   responsavel?: string | null
-  Prontuario?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
-  Exame?: Prisma.ExameUncheckedCreateNestedManyWithoutPacienteInput
+  prontuarios?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutPacienteInput
+  consultas?: Prisma.ConsultaUncheckedCreateNestedManyWithoutPacienteInput
 }
 
-export type PacienteCreateOrConnectWithoutConsultaInput = {
+export type PacienteCreateOrConnectWithoutExamesInput = {
   where: Prisma.PacienteWhereUniqueInput
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutConsultaInput, Prisma.PacienteUncheckedCreateWithoutConsultaInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutExamesInput, Prisma.PacienteUncheckedCreateWithoutExamesInput>
 }
 
-export type PacienteUpsertWithoutConsultaInput = {
-  update: Prisma.XOR<Prisma.PacienteUpdateWithoutConsultaInput, Prisma.PacienteUncheckedUpdateWithoutConsultaInput>
-  create: Prisma.XOR<Prisma.PacienteCreateWithoutConsultaInput, Prisma.PacienteUncheckedCreateWithoutConsultaInput>
+export type PacienteUpsertWithoutExamesInput = {
+  update: Prisma.XOR<Prisma.PacienteUpdateWithoutExamesInput, Prisma.PacienteUncheckedUpdateWithoutExamesInput>
+  create: Prisma.XOR<Prisma.PacienteCreateWithoutExamesInput, Prisma.PacienteUncheckedCreateWithoutExamesInput>
   where?: Prisma.PacienteWhereInput
 }
 
-export type PacienteUpdateToOneWithWhereWithoutConsultaInput = {
+export type PacienteUpdateToOneWithWhereWithoutExamesInput = {
   where?: Prisma.PacienteWhereInput
-  data: Prisma.XOR<Prisma.PacienteUpdateWithoutConsultaInput, Prisma.PacienteUncheckedUpdateWithoutConsultaInput>
+  data: Prisma.XOR<Prisma.PacienteUpdateWithoutExamesInput, Prisma.PacienteUncheckedUpdateWithoutExamesInput>
 }
 
-export type PacienteUpdateWithoutConsultaInput = {
+export type PacienteUpdateWithoutExamesInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
@@ -668,11 +668,11 @@ export type PacienteUpdateWithoutConsultaInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUpdateManyWithoutPacienteNestedInput
 }
 
-export type PacienteUncheckedUpdateWithoutConsultaInput = {
+export type PacienteUncheckedUpdateWithoutExamesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -681,8 +681,8 @@ export type PacienteUncheckedUpdateWithoutConsultaInput = {
   data_nascimento?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sexo?: Prisma.StringFieldUpdateOperationsInput | string
   responsavel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prontuario?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
-  Exame?: Prisma.ExameUncheckedUpdateManyWithoutPacienteNestedInput
+  prontuarios?: Prisma.ProntuarioUncheckedUpdateManyWithoutPacienteNestedInput
+  consultas?: Prisma.ConsultaUncheckedUpdateManyWithoutPacienteNestedInput
 }
 
 
@@ -691,15 +691,15 @@ export type PacienteUncheckedUpdateWithoutConsultaInput = {
  */
 
 export type PacienteCountOutputType = {
-  Prontuario: number
-  Consulta: number
-  Exame: number
+  prontuarios: number
+  consultas: number
+  exames: number
 }
 
 export type PacienteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Prontuario?: boolean | PacienteCountOutputTypeCountProntuarioArgs
-  Consulta?: boolean | PacienteCountOutputTypeCountConsultaArgs
-  Exame?: boolean | PacienteCountOutputTypeCountExameArgs
+  prontuarios?: boolean | PacienteCountOutputTypeCountProntuariosArgs
+  consultas?: boolean | PacienteCountOutputTypeCountConsultasArgs
+  exames?: boolean | PacienteCountOutputTypeCountExamesArgs
 }
 
 /**
@@ -715,21 +715,21 @@ export type PacienteCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * PacienteCountOutputType without action
  */
-export type PacienteCountOutputTypeCountProntuarioArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PacienteCountOutputTypeCountProntuariosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ProntuarioWhereInput
 }
 
 /**
  * PacienteCountOutputType without action
  */
-export type PacienteCountOutputTypeCountConsultaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PacienteCountOutputTypeCountConsultasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ConsultaWhereInput
 }
 
 /**
  * PacienteCountOutputType without action
  */
-export type PacienteCountOutputTypeCountExameArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type PacienteCountOutputTypeCountExamesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ExameWhereInput
 }
 
@@ -743,9 +743,9 @@ export type PacienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   data_nascimento?: boolean
   sexo?: boolean
   responsavel?: boolean
-  Prontuario?: boolean | Prisma.Paciente$ProntuarioArgs<ExtArgs>
-  Consulta?: boolean | Prisma.Paciente$ConsultaArgs<ExtArgs>
-  Exame?: boolean | Prisma.Paciente$ExameArgs<ExtArgs>
+  prontuarios?: boolean | Prisma.Paciente$prontuariosArgs<ExtArgs>
+  consultas?: boolean | Prisma.Paciente$consultasArgs<ExtArgs>
+  exames?: boolean | Prisma.Paciente$examesArgs<ExtArgs>
   _count?: boolean | Prisma.PacienteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["paciente"]>
 
@@ -784,9 +784,9 @@ export type PacienteSelectScalar = {
 
 export type PacienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cpf" | "telefone" | "email" | "data_nascimento" | "sexo" | "responsavel", ExtArgs["result"]["paciente"]>
 export type PacienteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Prontuario?: boolean | Prisma.Paciente$ProntuarioArgs<ExtArgs>
-  Consulta?: boolean | Prisma.Paciente$ConsultaArgs<ExtArgs>
-  Exame?: boolean | Prisma.Paciente$ExameArgs<ExtArgs>
+  prontuarios?: boolean | Prisma.Paciente$prontuariosArgs<ExtArgs>
+  consultas?: boolean | Prisma.Paciente$consultasArgs<ExtArgs>
+  exames?: boolean | Prisma.Paciente$examesArgs<ExtArgs>
   _count?: boolean | Prisma.PacienteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PacienteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -795,9 +795,9 @@ export type PacienteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $PacientePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Paciente"
   objects: {
-    Prontuario: Prisma.$ProntuarioPayload<ExtArgs>[]
-    Consulta: Prisma.$ConsultaPayload<ExtArgs>[]
-    Exame: Prisma.$ExamePayload<ExtArgs>[]
+    prontuarios: Prisma.$ProntuarioPayload<ExtArgs>[]
+    consultas: Prisma.$ConsultaPayload<ExtArgs>[]
+    exames: Prisma.$ExamePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1202,9 +1202,9 @@ readonly fields: PacienteFieldRefs;
  */
 export interface Prisma__PacienteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Prontuario<T extends Prisma.Paciente$ProntuarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$ProntuarioArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProntuarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  Consulta<T extends Prisma.Paciente$ConsultaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$ConsultaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsultaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  Exame<T extends Prisma.Paciente$ExameArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$ExameArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  prontuarios<T extends Prisma.Paciente$prontuariosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$prontuariosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProntuarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  consultas<T extends Prisma.Paciente$consultasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$consultasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsultaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  exames<T extends Prisma.Paciente$examesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Paciente$examesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1630,9 +1630,9 @@ export type PacienteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Paciente.Prontuario
+ * Paciente.prontuarios
  */
-export type Paciente$ProntuarioArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Paciente$prontuariosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Prontuario
    */
@@ -1654,9 +1654,9 @@ export type Paciente$ProntuarioArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Paciente.Consulta
+ * Paciente.consultas
  */
-export type Paciente$ConsultaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Paciente$consultasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Consulta
    */
@@ -1678,9 +1678,9 @@ export type Paciente$ConsultaArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Paciente.Exame
+ * Paciente.exames
  */
-export type Paciente$ExameArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Paciente$examesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Exame
    */

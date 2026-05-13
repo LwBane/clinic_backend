@@ -13,25 +13,25 @@
  * 🟢 You can import this file directly.
  */
 
-import * as Prisma from './internal/prismaNamespaceBrowser'
+import * as Prisma from './internal/prismaNamespaceBrowser.ts'
 export { Prisma }
-export * as $Enums from './enums'
-export * from './enums';
+export * as $Enums from './enums.ts'
+export * from './enums.ts';
 /**
  * Model Usuario
  * 
  */
 export type Usuario = Prisma.UsuarioModel
 /**
- * Model Exame
- * 
- */
-export type Exame = Prisma.ExameModel
-/**
  * Model Token
  * 
  */
 export type Token = Prisma.TokenModel
+/**
+ * Model Paciente
+ * 
+ */
+export type Paciente = Prisma.PacienteModel
 /**
  * Model Prontuario
  * 
@@ -43,7 +43,7 @@ export type Prontuario = Prisma.ProntuarioModel
  */
 export type Consulta = Prisma.ConsultaModel
 /**
- * Model Paciente
+ * Model Exame
  * 
  */
-export type Paciente = Prisma.PacienteModel
+export type Exame = Prisma.ExameModel

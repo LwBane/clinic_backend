@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Usuario
@@ -418,6 +418,7 @@ export type UsuarioCreateWithoutTokensInput = {
   nome?: string | null
   senha: string
   role?: $Enums.Role
+  prontuarios?: Prisma.ProntuarioCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTokensInput = {
@@ -426,6 +427,7 @@ export type UsuarioUncheckedCreateWithoutTokensInput = {
   nome?: string | null
   senha: string
   role?: $Enums.Role
+  prontuarios?: Prisma.ProntuarioUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTokensInput = {
@@ -449,6 +451,7 @@ export type UsuarioUpdateWithoutTokensInput = {
   nome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  prontuarios?: Prisma.ProntuarioUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTokensInput = {
@@ -457,6 +460,57 @@ export type UsuarioUncheckedUpdateWithoutTokensInput = {
   nome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  prontuarios?: Prisma.ProntuarioUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutProntuariosInput = {
+  email: string
+  nome?: string | null
+  senha: string
+  role?: $Enums.Role
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioUncheckedCreateWithoutProntuariosInput = {
+  id?: number
+  email: string
+  nome?: string | null
+  senha: string
+  role?: $Enums.Role
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioCreateOrConnectWithoutProntuariosInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutProntuariosInput, Prisma.UsuarioUncheckedCreateWithoutProntuariosInput>
+}
+
+export type UsuarioUpsertWithoutProntuariosInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutProntuariosInput, Prisma.UsuarioUncheckedUpdateWithoutProntuariosInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutProntuariosInput, Prisma.UsuarioUncheckedCreateWithoutProntuariosInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutProntuariosInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutProntuariosInput, Prisma.UsuarioUncheckedUpdateWithoutProntuariosInput>
+}
+
+export type UsuarioUpdateWithoutProntuariosInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutProntuariosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
