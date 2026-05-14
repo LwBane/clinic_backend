@@ -3,15 +3,21 @@ import type { Consulta } from "../prisma/generated/prisma/client";
 import { ConsultaService, consultaService } from "../services/ConsultationService";
 
 class ConsultaController {
-    constructor(private readonly service: ConsultaService) {}
+    constructor(private readonly service: ConsultaService) { }
 
-    async listarTodasConsultas(_: Request, res: Response) {
+
+    async listarTodasConsultas(req: Request, res: Response) {
         try {
-            const consultas = await this.service.listarTodasConsultas();
-            return res.status(200).json(consultas);
+            const pagina = req.query.pagina ? Number(req.query.pagina) : undefined
+            const limite = req.query.limite ? Number(req.query.limite) : undefined
+
+            const exames = await this.service.listarTodasConsultas(pagina, limite);
+            return res.status(200).json(exames)
         } catch (error) {
-            console.log(error);
-            return res.status(404).json({ error });
+            console.log(error)
+            return res.status(404).json({
+                error
+            })
         }
     }
 

@@ -6,12 +6,21 @@ export class ConsultaRepository {
         this.prisma = prisma
     }
 
-    async listarTodasConsultas() {
-        return await this.prisma.consulta.findMany({
-            include: {
-                paciente: true
-            }
-        });
+    async listarTodasConsultas(pagina?: number, limite?: number) {
+        const existePaginacao = pagina! && limite!
+        if (!existePaginacao) return await prisma.exame.findMany()
+        const exames = await prisma.exame.findMany({
+            skip: (pagina - 1) * limite,
+            take: limite
+        })
+
+        const total = await prisma.exame.count();
+        const totalPaginas = Math.ceil(total / limite)
+        return {
+            exames,
+            total,
+            totalPaginas
+        }
     }
 
     async buscarConsultaId(idConsulta: number) {

@@ -4,8 +4,9 @@ import { consultaRepository, type ConsultaRepository } from "../repositories/Con
 export class ConsultaService {
     constructor(private readonly repository: ConsultaRepository) {}
 
-    async listarTodasConsultas() {
-        return await this.repository.listarTodasConsultas();
+    async listarTodasConsultas(pagina?: number, limite?: number) {
+        const exames = await this.repository.listarTodasConsultas(pagina, limite)
+        return exames
     }
 
     async buscarConsultaId(idConsulta: number) {
